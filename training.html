@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gesundheitstraining – agil Frankfurt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --pink: #E20074;
+      --pink-light: #fce6f2;
+      --gray: #9CB4AF;
+      --gray-light: #f4f7f6;
+      --dark: #1a1a1a;
+      --text: #333333;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid #eee;
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img { height: 48px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--pink); }
+
+    .nav-cta {
+      background: var(--pink);
+      color: var(--white) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      transition: opacity 0.2s !important;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    .hero {
+      margin-top: 70px;
+      height: 480px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.4);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 4rem;
+      max-width: 700px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--pink);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span { color: var(--pink); }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    /* ── SECTION TAG ── */
+    .section-tag {
+      display: inline-block;
+      background: var(--pink-light);
+      color: var(--pink);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── BRÜCKE ── */
+    .bruecke {
+      padding: 6rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 5rem;
+    }
+
+    .bruecke-img {
+      width: 420px;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 16px;
+      flex-shrink: 0;
+    }
+
+    .bruecke-text { flex: 1; }
+
+    .bruecke-text h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.5px;
+    }
+
+    .bruecke-text h2 span { color: var(--pink); }
+
+    .bruecke-text p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    /* ── JOURNEY ── */
+    .journey {
+      background: var(--dark);
+      padding: 6rem 4rem;
+    }
+
+    .journey-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .journey-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .journey-header .section-tag {
+      background: rgba(226, 0, 116, 0.2);
+      color: var(--pink);
+    }
+
+    .journey-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      margin-top: 0.5rem;
+    }
+
+    .journey-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .journey-step {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .journey-step:hover { background: rgba(255,255,255,0.1); }
+
+    .journey-step-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--pink);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .journey-step h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+    }
+
+    .journey-step p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ── ANGEBOTE ── */
+    .angebote {
+      padding: 6rem 4rem;
+      background: var(--gray-light);
+    }
+
+    .angebote-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .angebote-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .angebote-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+      margin-top: 0.5rem;
+    }
+
+    .angebote-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .angebot-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #eee;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .angebot-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--pink);
+    }
+
+    .angebot-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .angebot-card-body {
+      padding: 1.5rem;
+    }
+
+    .angebot-tag {
+      display: inline-block;
+      background: var(--pink-light);
+      color: var(--pink);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      margin-bottom: 0.8rem;
+    }
+
+    .angebot-card-body h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .angebot-card-body p {
+      font-size: 0.875rem;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* ── FÜR WEN ── */
+    .fuerwen {
+      padding: 6rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .fuerwen-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .fuerwen-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+      margin-top: 0.5rem;
+    }
+
+    .fuerwen-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .fuerwen-item {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-radius: 14px;
+      border: 1px solid #eee;
+      transition: border-color 0.2s;
+    }
+
+    .fuerwen-item:hover { border-color: var(--pink); }
+
+    .fuerwen-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .fuerwen-item h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .fuerwen-item p {
+      font-size: 0.8rem;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* ── STANDORTE ── */
+    .standorte {
+      background: var(--dark);
+      padding: 6rem 4rem;
+    }
+
+    .standorte-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .standorte-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .standorte-header .section-tag {
+      background: rgba(226, 0, 116, 0.2);
+      color: var(--pink);
+    }
+
+    .standorte-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-top: 0.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .standorte-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .standort-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: background 0.2s;
+    }
+
+    .standort-card:hover { background: rgba(255,255,255,0.1); }
+
+    .standort-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .standort-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+      margin-bottom: 0.3rem;
+    }
+
+    .standort-card a {
+      font-size: 0.85rem;
+      color: var(--pink);
+      text-decoration: none;
+    }
+
+    .pink-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--pink);
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      background: var(--pink);
+      padding: 6rem 4rem;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--pink);
+      padding: 0.85rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-block;
+      transition: opacity 0.2s;
+    }
+
+    .btn-white:hover { opacity: 0.9; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      padding: 3rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="images/AgilLogoTransparent.png" alt="agil Logo" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="physiotherapie.html">Physiotherapie</a></li>
+      <li><a href="training.html" class="active">Gesundheitstraining</a></li>
+      <li><a href="standorte.html">Standorte</a></li>
+      <li><a href="#">Jobs</a></li>
+      <li><a href="standorte.html" class="nav-cta">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img
+      class="hero-img"
+      src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80"
+      alt="Gesundheitstraining agil"
+    />
+    <div class="hero-content">
+      <span class="hero-tag">Gesundheitstraining & Fitness</span>
+      <h1>Stärker als<br /><span>je zuvor.</span></h1>
+      <p>Der nächste Schritt nach der Therapie – oder der erste Schritt in ein aktiveres Leben. Training, das dich wirklich weiterbringt.</p>
+    </div>
+  </section>
+
+  <!-- BRÜCKE -->
+  <section class="bruecke">
+    <img
+      class="bruecke-img"
+      src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80"
+      alt="Training bei agil"
+    />
+    <div class="bruecke-text">
+      <span class="section-tag">Die Verbindung</span>
+      <h2>Von der Therapie <span>zur Stärke.</span></h2>
+      <p>Physiotherapie bringt dich zurück. Gesundheitstraining bringt dich weiter. Bei agil gehören beide Welten zusammen – unter einem Dach, mit denselben Menschen, mit demselben Ziel.</p>
+      <p>Ob du nach einer Verletzung wieder trainieren willst, Prävention betreibst oder einfach fitter und leistungsfähiger werden möchtest – wir begleiten dich auf diesem Weg.</p>
+      <p>Professionell. Individuell. Familiär.</p>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="journey">
+    <div class="journey-inner">
+      <div class="journey-header">
+        <span class="section-tag">Dein Weg</span>
+        <h2>Drei Phasen. Ein Ziel.</h2>
+      </div>
+      <div class="journey-steps">
+        <div class="journey-step">
+          <div class="journey-step-number">01</div>
+          <h3>Rehabilitation</h3>
+          <p>Nach Verletzung oder Operation – wir begleiten dich sicher zurück in Bewegung. Aufbauend auf der Physiotherapie, abgestimmt auf deinen Körper.</p>
+        </div>
+        <div class="journey-step">
+          <div class="journey-step-number">02</div>
+          <h3>Prävention</h3>
+          <p>Bevor etwas passiert. Gezieltes Training für mehr Stabilität, Beweglichkeit und Belastbarkeit – damit du gar nicht erst zur Therapie musst.</p>
+        </div>
+        <div class="journey-step">
+          <div class="journey-step-number">03</div>
+          <h3>Performance</h3>
+          <p>Besser als je zuvor. Mehr Kraft, mehr Ausdauer, mehr Lebensqualität. Nicht trotz deiner Geschichte – sondern wegen ihr.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANGEBOTE -->
+  <section class="angebote">
+    <div class="angebote-inner">
+      <div class="angebote-header">
+        <span class="section-tag">Unser Angebot</span>
+        <h2>Was dich erwartet</h2>
+      </div>
+      <div class="angebote-grid">
+        <div class="angebot-card">
+          <img
+            class="angebot-card-img"
+            src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=600&q=80"
+            alt="Gerätetraining"
+          />
+          <div class="angebot-card-body">
+            <span class="angebot-tag">Training</span>
+            <h3>Gerätegestütztes Training</h3>
+            <p>Modernste Geräte, professionelle Anleitung. Kraftaufbau und Ausdauer – individuell auf deine Ziele abgestimmt.</p>
+          </div>
+        </div>
+        <div class="angebot-card">
+          <img
+            class="angebot-card-img"
+            src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80"
+            alt="Präventionskurse"
+          />
+          <div class="angebot-card-body">
+            <span class="angebot-tag">Prävention</span>
+            <h3>Präventionskurse</h3>
+            <p>Von der Krankenkasse anerkannte Kurse für Rücken, Entspannung und Bewegung – in angenehmer Gruppenatmosphäre.</p>
+          </div>
+        </div>
+        <div class="angebot-card">
+          <img
+            class="angebot-card-img"
+            src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?w=600&q=80"
+            alt="Reha Training"
+          />
+          <div class="angebot-card-body">
+            <span class="angebot-tag">Rehabilitation</span>
+            <h3>Reha-Training</h3>
+            <p>Der gezielte Übergang von der Physiotherapie ins Training – begleitet von Fachleuten, die deinen Weg kennen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FÜR WEN -->
+  <section class="fuerwen">
+    <div class="fuerwen-header">
+      <span class="section-tag">Für jeden</span>
+      <h2>Training für alle Lebensphasen</h2>
+    </div>
+    <div class="fuerwen-grid">
+      <div class="fuerwen-item">
+        <span class="fuerwen-icon">🏃</span>
+        <h3>Nach der Reha</h3>
+        <p>Sicher zurück in Bewegung – aufbauend auf der Therapie.</p>
+      </div>
+      <div class="fuerwen-item">
+        <span class="fuerwen-icon">🛡️</span>
+        <h3>Prävention</h3>
+        <p>Stärker werden bevor etwas passiert.</p>
+      </div>
+      <div class="fuerwen-item">
+        <span class="fuerwen-icon">👵</span>
+        <h3>Senioren</h3>
+        <p>Beweglich, aktiv und selbstständig bleiben.</p>
+      </div>
+      <div class="fuerwen-item">
+        <span class="fuerwen-icon">💪</span>
+        <h3>Alle Fitnesslevel</h3>
+        <p>Egal wo du startest – wir holen dich ab.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STANDORTE -->
+  <section class="standorte">
+    <div class="standorte-inner">
+      <div class="standorte-header">
+        <span class="section-tag">Training Standorte</span>
+        <h2>In deinem Stadtteil.</h2>
+      </div>
+      <div class="standorte-grid">
+        <div class="standort-card">
+          <h3><span class="pink-dot"></span>agil Eschersheim</h3>
+          <p>Kirchhainer Straße 29, 60433 Frankfurt</p>
+          <a href="tel:+496995208103">069 95208103</a>
+        </div>
+        <div class="standort-card">
+          <h3><span class="pink-dot"></span>agil Ostend</h3>
+          <p>Juchostraße 7, 60385 Frankfurt</p>
+          <a href="tel:+496948000479">069 48000479</a>
+        </div>
+        <div class="standort-card">
+          <h3><span class="pink-dot"></span>agil Dornbusch</h3>
+          <p>Eschersheimer Landstraße 311, 60320 Frankfurt</p>
+          <a href="mailto:agil-dornbusch@physio-agil.de">Kontakt per Mail</a>
+        </div>
+        <div class="standort-card">
+          <h3><span class="pink-dot"></span>agil Preungesheim</h3>
+          <p>Kantapfelstraße 26, 60435 Frankfurt</p>
+          <a href="tel:+496995415969">069 95415969</a>
+        </div>
+        <div class="standort-card">
+          <h3><span class="pink-dot"></span>agil Langen</h3>
+          <p>Bahnstraße 37, 63225 Langen</p>
+          <a href="tel:+4961032084668">06103 2084668</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Bereit loszulegen?</h2>
+    <p>Starte jetzt mit deinem ersten Schritt. Wir zeigen dir wie – persönlich, individuell und auf dich abgestimmt.</p>
+    <a href="mailto:mail@physio-agil.de" class="btn-white">Jetzt Kontakt aufnehmen</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <img src="images/AgilLogoTransparent.png" alt="agil Logo" style="height: 40px; width: auto;" />
+    </div>
+    <ul class="footer-links">
+      <li><a href="#">Impressum</a></li>
+      <li><a href="#">Datenschutz</a></li>
+      <li><a href="#">AGB</a></li>
+      <li><a href="mailto:mail@physio-agil.de">mail@physio-agil.de</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 agil Physiotherapie & Gesundheitstraining</div>
+  </footer>
+
+</body>
+</html>
