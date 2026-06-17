@@ -1,0 +1,1292 @@
+/* ============================================================
+   agil – style.css (gemeinsam für alle Seiten)
+   Basis: Original-Design beibehalten + neue Sections + Responsive
+   ============================================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --pink:       #E20074;
+  --pink-light: #fce6f2;
+  --gray:       #9CB4AF;
+  --gray-light: #f4f7f6;
+  --dark:       #1a1a1a;
+  --text:       #333333;
+  --white:      #ffffff;
+  --yellow:     #E6D745;
+  --blue:       #47BED8;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+/* ── NAVIGATION ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid #eee;
+  padding: 0 2rem;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo img { height: 48px; width: auto; }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--pink); }
+
+.nav-cta {
+  background: var(--pink);
+  color: var(--white) !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  transition: opacity 0.2s !important;
+}
+
+.nav-cta:hover { opacity: 0.85; color: var(--white) !important; }
+
+/* Mobile Toggle */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--dark);
+  border-radius: 2px;
+  transition: 0.2s;
+}
+
+/* ── HERO – Startseite (Vollbild) ── */
+.hero {
+  margin-top: 70px;
+  height: calc(100vh - 70px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ── HERO – Unterseiten (kompakt) ── */
+.hero-sub {
+  margin-top: 70px;
+  height: 480px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.45);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 4rem;
+  max-width: 700px;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: var(--pink);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1, .hero-sub h1 {
+  font-size: 3.8rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+  letter-spacing: -1px;
+}
+
+.hero-sub h1 { font-size: 3.2rem; }
+
+.hero h1 span, .hero-sub h1 span { color: var(--pink); }
+
+.hero p {
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+.hero-sub p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+  max-width: 500px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  background: var(--pink);
+  color: var(--white);
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: opacity 0.2s;
+  display: inline-block;
+}
+
+.btn-primary:hover { opacity: 0.85; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  border: 2px solid rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  display: inline-block;
+}
+
+.btn-outline:hover { border-color: var(--white); }
+
+.btn-white {
+  background: var(--white);
+  color: var(--pink);
+  padding: 0.85rem 2.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: opacity 0.2s;
+  display: inline-block;
+}
+
+.btn-white:hover { opacity: 0.9; }
+
+/* ── SECTION TAG ── */
+.section-tag {
+  display: inline-block;
+  background: var(--pink-light);
+  color: var(--pink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+}
+
+/* ── VISION ── */
+.vision {
+  padding: 6rem 4rem;
+  background: var(--white);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.vision h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.vision h2 span { color: var(--pink); }
+
+.vision > p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.8;
+}
+
+.vision-stats {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 4rem;
+  padding-top: 4rem;
+  border-top: 1px solid #eee;
+}
+
+.stat-number {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--pink);
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 0.3rem;
+}
+
+/* ── GESCHICHTE / PHILOSOPHIE ── */
+.geschichte {
+  background: var(--gray-light);
+  padding: 6rem 4rem;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 20px;
+  margin-bottom: 6rem;
+}
+
+.geschichte-img {
+  width: 380px;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 16px;
+  flex-shrink: 0;
+}
+
+.geschichte-content .section-tag { margin-bottom: 1.2rem; }
+
+.geschichte-content h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.geschichte-content h2 span { color: var(--pink); }
+
+.geschichte-content p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+
+.geschichte-content .btn-primary { margin-top: 1rem; }
+
+/* ── LEISTUNGEN (Startseite – große Bildkarten) ── */
+.leistungen {
+  padding: 0 4rem 6rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.leistungen-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.leistungen-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+  margin-top: 0.8rem;
+}
+
+.leistungen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.leistung-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 420px;
+  text-decoration: none;
+  display: block;
+}
+
+.leistung-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+  transition: transform 0.4s;
+}
+
+.leistung-card:hover img { transform: scale(1.04); }
+
+.leistung-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.5rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
+}
+
+.leistung-card-content h3 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.7rem;
+}
+
+.leistung-card-content p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.leistung-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 2px solid var(--pink);
+  padding-bottom: 2px;
+}
+
+/* ── RÄUME ── */
+.raeume-section {
+  padding: 6rem 4rem;
+  background: var(--white);
+}
+
+.raeume-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.raeume-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.raeume-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.raeume-header h2 span { color: var(--pink); }
+
+.raeume-header p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.raeume-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 260px 260px;
+  gap: 1rem;
+}
+
+.raeume-img {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.raeume-img--large {
+  grid-row: 1 / 3;
+}
+
+.raeume-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.raeume-img:hover img { transform: scale(1.03); }
+
+/* ── STANDORTE (dunkler Hintergrund) ── */
+.standorte {
+  background: var(--dark);
+  padding: 6rem 4rem;
+}
+
+.standorte-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.standorte-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.standorte-header .section-tag {
+  background: rgba(226, 0, 116, 0.2);
+  color: var(--pink);
+}
+
+.standorte-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-top: 0.8rem;
+  letter-spacing: -0.5px;
+}
+
+.standorte-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.standort-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.standort-card:hover { background: rgba(255,255,255,0.1); }
+
+.standort-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+
+.standort-card p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+.standort-card a {
+  font-size: 0.85rem;
+  color: var(--pink);
+  text-decoration: none;
+}
+
+.pink-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--pink);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+/* ── TEAM / KARRIERE CTA ── */
+.team-cta {
+  background: var(--pink);
+  padding: 6rem 4rem;
+  text-align: center;
+}
+
+.team-cta h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  margin-bottom: 1.2rem;
+}
+
+.team-cta p {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.85);
+  max-width: 620px;
+  margin: 0 auto 1rem;
+  line-height: 1.75;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #111;
+  padding: 3rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-logo img { height: 40px; width: auto; }
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--white); }
+
+.footer-copy {
+  color: rgba(255,255,255,0.3);
+  font-size: 0.8rem;
+}
+
+/* ── INTRO BLOCK (Unterseiten) ── */
+.intro {
+  padding: 6rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.intro-text { flex: 1; }
+
+.intro-text h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.5px;
+}
+
+.intro-text h2 span { color: var(--pink); }
+
+.intro-text p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+
+.intro-img {
+  width: 420px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 16px;
+  flex-shrink: 0;
+}
+
+/* ── LEISTUNGEN GRID (Unterseiten – Icons) ── */
+.leistungen-page {
+  background: var(--gray-light);
+  padding: 6rem 4rem;
+}
+
+.leistungen-page-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.leistungen-page-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.leistungen-page-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+  margin-top: 0.5rem;
+}
+
+.leistungen-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+.leistung-item {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 1.8rem 1.5rem;
+  border: 1px solid #eee;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.leistung-item:hover {
+  border-color: var(--pink);
+  transform: translateY(-3px);
+}
+
+.leistung-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--pink-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.leistung-item h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.leistung-item p {
+  font-size: 0.85rem;
+  color: #777;
+  line-height: 1.6;
+}
+
+/* ── ABLAUF / STEPS ── */
+.ablauf {
+  padding: 6rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.ablauf-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.ablauf-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+  margin-top: 0.5rem;
+}
+
+.ablauf-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.ablauf-step {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  border: 1px solid #eee;
+  transition: border-color 0.2s;
+}
+
+.ablauf-step:hover { border-color: var(--pink); }
+
+.step-number {
+  width: 56px;
+  height: 56px;
+  background: var(--pink);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+}
+
+.ablauf-step h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.8rem;
+}
+
+.ablauf-step p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.7;
+}
+
+/* ── JOURNEY (dunkler BG – Training) ── */
+.journey {
+  background: var(--dark);
+  padding: 6rem 4rem;
+}
+
+.journey-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.journey-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.journey-header .section-tag {
+  background: rgba(226, 0, 116, 0.2);
+  color: var(--pink);
+}
+
+.journey-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  margin-top: 0.5rem;
+}
+
+.journey-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.journey-step {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: background 0.2s;
+}
+
+.journey-step:hover { background: rgba(255,255,255,0.1); }
+
+.journey-step-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--pink);
+  opacity: 0.4;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.journey-step h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.7rem;
+}
+
+.journey-step p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+}
+
+/* ── ANGEBOTE CARDS (Training) ── */
+.angebote {
+  padding: 6rem 4rem;
+  background: var(--gray-light);
+}
+
+.angebote-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.angebote-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.angebote-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+  margin-top: 0.5rem;
+}
+
+.angebote-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.angebot-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.angebot-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--pink);
+}
+
+.angebot-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.angebot-card-body { padding: 1.5rem; }
+
+.angebot-tag {
+  display: inline-block;
+  background: var(--pink-light);
+  color: var(--pink);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  margin-bottom: 0.8rem;
+}
+
+.angebot-card-body h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.6rem;
+}
+
+.angebot-card-body p {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.7;
+}
+
+/* ── FÜR WEN ── */
+.fuerwen {
+  padding: 6rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.fuerwen-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.fuerwen-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+  margin-top: 0.5rem;
+}
+
+.fuerwen-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+.fuerwen-item {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-radius: 14px;
+  border: 1px solid #eee;
+  transition: border-color 0.2s;
+}
+
+.fuerwen-item:hover { border-color: var(--pink); }
+
+.fuerwen-icon {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.fuerwen-item h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.fuerwen-item p {
+  font-size: 0.8rem;
+  color: #888;
+  line-height: 1.6;
+}
+
+/* ── BRÜCKE (Training Seite) ── */
+.bruecke {
+  padding: 6rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.bruecke-img {
+  width: 420px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 16px;
+  flex-shrink: 0;
+}
+
+.bruecke-text { flex: 1; }
+
+.bruecke-text h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.5px;
+}
+
+.bruecke-text h2 span { color: var(--pink); }
+
+.bruecke-text p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+
+/* ── CTA PINK BANNER ── */
+.cta {
+  background: var(--pink);
+  padding: 6rem 4rem;
+  text-align: center;
+}
+
+.cta h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  margin-bottom: 1rem;
+}
+
+.cta p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.85);
+  max-width: 520px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+/* ── STANDORTE DETAIL (standorte.html) ── */
+.standorte-detail-section {
+  padding: 6rem 4rem;
+}
+
+.standorte-detail-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.standorte-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.standort-detail-card {
+  background: var(--white);
+  border: 1px solid #eee;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.standort-detail-card:hover {
+  border-color: var(--pink);
+  transform: translateY(-3px);
+}
+
+.standort-detail-card--stammhaus {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.standort-detail-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.standort-detail-card--stammhaus .standort-detail-img {
+  height: 100%;
+  min-height: 280px;
+}
+
+.standort-detail-body { padding: 2rem; }
+
+.standort-detail-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.3px;
+}
+
+.standort-badge {
+  display: inline-block;
+  background: var(--pink-light);
+  color: var(--pink);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.25rem 0.7rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.standort-desc {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.75;
+  margin-bottom: 1.2rem;
+}
+
+.standort-contact {
+  border-top: 1px solid #eee;
+  padding-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.standort-contact-group h4 {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 0.3rem;
+}
+
+.standort-contact-group a {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--pink);
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.standort-contact-group a:hover { text-decoration: underline; }
+
+.standort-address {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.standort-hours {
+  font-size: 0.82rem;
+  color: #999;
+}
+
+/* ── LEISTUNGEN BOX (gemeinsamer Rahmen Startseite) ── */
+.leistungen-box {
+  background: transparent;
+  padding: 0;
+}
+
+.leistungen-box .leistungen-grid {
+  margin-bottom: 0;
+}
+
+.leistungen-box-note {
+  text-align: center;
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 2.5rem auto 0;
+}
+
+/* ============================================================
+   RESPONSIVE – TABLET
+   ============================================================ */
+@media (max-width: 1024px) {
+  .leistungen-icon-grid { grid-template-columns: repeat(2, 1fr); }
+  .fuerwen-grid { grid-template-columns: repeat(2, 1fr); }
+  .geschichte { gap: 3rem; padding: 4rem 3rem; }
+  .geschichte-img { width: 300px; height: 380px; }
+  .bruecke { gap: 3rem; }
+  .bruecke-img { width: 320px; height: 400px; }
+  .intro { gap: 3rem; }
+  .intro-img { width: 320px; height: 400px; }
+  .raeume-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .raeume-img--large {
+    grid-column: 1 / -1;
+    height: 300px;
+  }
+  .standort-detail-card--stammhaus { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   RESPONSIVE – MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Nav */
+  nav { padding: 0 1.5rem; }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 70px; left: 0; right: 0;
+    background: var(--white);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.5rem 1.5rem;
+    gap: 0;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .nav-links.is-open { display: flex; }
+
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .nav-links li:last-child {
+    border-bottom: none;
+    padding-top: 0.8rem;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1rem;
+  }
+
+  .nav-toggle { display: flex; }
+
+  /* Hero */
+  .hero { min-height: 85vh; height: auto; padding: 3rem 0; }
+  .hero-sub { height: auto; min-height: 360px; padding: 3rem 0; }
+  .hero-content { padding: 0 1.5rem; max-width: 100%; }
+  .hero h1, .hero-sub h1 { font-size: 2.4rem; letter-spacing: -0.5px; }
+  .hero p { font-size: 1rem; }
+  .hero-buttons { flex-direction: column; align-items: flex-start; }
+
+  /* Sections padding */
+  .vision { padding: 4rem 1.5rem; }
+  .geschichte { flex-direction: column; gap: 2rem; padding: 3rem 1.5rem; margin-bottom: 0; border-radius: 0; }
+  .geschichte-img { width: 100%; height: 260px; }
+  .leistungen { padding: 0 1.5rem 4rem; }
+  .leistungen-box { padding: 1rem; }
+  .raeume-section { padding: 4rem 1.5rem; }
+  .standorte { padding: 4rem 1.5rem; }
+  .team-cta { padding: 4rem 1.5rem; }
+  .ablauf { padding: 4rem 1.5rem; }
+  .journey { padding: 4rem 1.5rem; }
+  .angebote { padding: 4rem 1.5rem; }
+  .fuerwen { padding: 4rem 1.5rem; }
+  .bruecke { padding: 4rem 1.5rem; flex-direction: column; gap: 2rem; }
+  .intro { padding: 4rem 1.5rem; flex-direction: column; gap: 2rem; }
+  .leistungen-page { padding: 4rem 1.5rem; }
+  .cta { padding: 4rem 1.5rem; }
+  .standorte-detail-section { padding: 4rem 1.5rem; }
+
+  /* Grids → 1 Spalte */
+  .leistungen-grid,
+  .ablauf-steps,
+  .journey-steps,
+  .angebote-grid,
+  .fuerwen-grid,
+  .standorte-grid,
+  .standorte-detail-grid,
+  .raeume-grid,
+  .leistungen-icon-grid { grid-template-columns: 1fr; }
+
+  .standort-detail-card--stammhaus {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+  }
+
+  /* Typo */
+  .vision h2, .geschichte-content h2, .leistungen-header h2,
+  .raeume-header h2, .standorte-header h2, .team-cta h2,
+  .ablauf-header h2, .journey-header h2, .angebote-header h2,
+  .fuerwen-header h2, .bruecke-text h2, .intro-text h2, .cta h2 {
+    font-size: 1.9rem;
+  }
+
+  .vision-stats { gap: 2rem; flex-wrap: wrap; }
+
+  /* Leistung card */
+  .leistung-card { height: 300px; }
+
+  /* Bilder */
+  .bruecke-img, .intro-img { width: 100%; height: 260px; }
+  .raeume-img { height: 220px; }
+  .raeume-img--large { height: 260px; }
+
+  /* Footer */
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.5rem 1.5rem;
+  }
+}

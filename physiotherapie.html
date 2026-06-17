@@ -3,457 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Physiotherapie – agil Frankfurt</title>
+  <title>Physiotherapie – agil Frankfurt & Langen</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --pink: #E20074;
-      --pink-light: #fce6f2;
-      --gray: #9CB4AF;
-      --gray-light: #f4f7f6;
-      --dark: #1a1a1a;
-      --text: #333333;
-      --white: #ffffff;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
-      background: var(--white);
-    }
-
-    /* ── NAVIGATION ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: var(--white);
-      border-bottom: 1px solid #eee;
-      padding: 0 2rem;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-logo img { height: 48px; width: auto; }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--pink); }
-
-    .nav-cta {
-      background: var(--pink);
-      color: var(--white) !important;
-      padding: 0.5rem 1.2rem;
-      border-radius: 50px;
-      transition: opacity 0.2s !important;
-    }
-
-    .nav-cta:hover { opacity: 0.85; }
-
-    /* ── HERO ── */
-    .hero {
-      margin-top: 70px;
-      height: 480px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .hero-img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.4);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 4rem;
-      max-width: 700px;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      background: var(--pink);
-      color: var(--white);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 0.4rem 1rem;
-      border-radius: 50px;
-      margin-bottom: 1.2rem;
-    }
-
-    .hero h1 {
-      font-size: 3.2rem;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      letter-spacing: -1px;
-    }
-
-    .hero h1 span { color: var(--pink); }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.85);
-      line-height: 1.7;
-      max-width: 500px;
-    }
-
-    /* ── SECTION TAG ── */
-    .section-tag {
-      display: inline-block;
-      background: var(--pink-light);
-      color: var(--pink);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 0.4rem 1rem;
-      border-radius: 50px;
-      margin-bottom: 1.2rem;
-    }
-
-    /* ── INTRO ── */
-    .intro {
-      padding: 6rem 4rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 5rem;
-    }
-
-    .intro-text { flex: 1; }
-
-    .intro-text h2 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--dark);
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
-      letter-spacing: -0.5px;
-    }
-
-    .intro-text h2 span { color: var(--pink); }
-
-    .intro-text p {
-      font-size: 1rem;
-      color: #555;
-      line-height: 1.9;
-      margin-bottom: 1rem;
-    }
-
-    .intro-img {
-      width: 420px;
-      height: 500px;
-      object-fit: cover;
-      border-radius: 16px;
-      flex-shrink: 0;
-    }
-
-    /* ── LEISTUNGEN ── */
-    .leistungen {
-      background: var(--gray-light);
-      padding: 6rem 4rem;
-    }
-
-    .leistungen-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .leistungen-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .leistungen-header h2 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--dark);
-      letter-spacing: -0.5px;
-      margin-top: 0.5rem;
-    }
-
-    .leistungen-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.2rem;
-    }
-
-    .leistung-item {
-      background: var(--white);
-      border-radius: 14px;
-      padding: 1.8rem 1.5rem;
-      border: 1px solid #eee;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .leistung-item:hover {
-      border-color: var(--pink);
-      transform: translateY(-3px);
-    }
-
-    .leistung-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--pink-light);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-    }
-
-    .leistung-item h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 0.5rem;
-    }
-
-    .leistung-item p {
-      font-size: 0.85rem;
-      color: #777;
-      line-height: 1.6;
-    }
-
-    /* ── ABLAUF ── */
-    .ablauf {
-      padding: 6rem 4rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .ablauf-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .ablauf-header h2 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--dark);
-      letter-spacing: -0.5px;
-      margin-top: 0.5rem;
-    }
-
-    .ablauf-steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      position: relative;
-    }
-
-    .ablauf-step {
-      text-align: center;
-      padding: 2.5rem 2rem;
-      border-radius: 16px;
-      border: 1px solid #eee;
-      position: relative;
-    }
-
-    .step-number {
-      width: 56px;
-      height: 56px;
-      background: var(--pink);
-      color: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin: 0 auto 1.5rem;
-    }
-
-    .ablauf-step h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 0.8rem;
-    }
-
-    .ablauf-step p {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.7;
-    }
-
-    /* ── STANDORTE ── */
-    .standorte {
-      background: var(--dark);
-      padding: 6rem 4rem;
-    }
-
-    .standorte-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .standorte-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .standorte-header .section-tag {
-      background: rgba(226, 0, 116, 0.2);
-      color: var(--pink);
-    }
-
-    .standorte-header h2 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-top: 0.5rem;
-      letter-spacing: -0.5px;
-    }
-
-    .standorte-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.2rem;
-    }
-
-    .standort-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: background 0.2s;
-    }
-
-    .standort-card:hover { background: rgba(255,255,255,0.1); }
-
-    .standort-card h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .standort-card p {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.6;
-      margin-bottom: 0.3rem;
-    }
-
-    .standort-card a {
-      font-size: 0.85rem;
-      color: var(--pink);
-      text-decoration: none;
-    }
-
-    .pink-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--pink);
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 0.5rem;
-    }
-
-    /* ── CTA ── */
-    .cta {
-      background: var(--pink);
-      padding: 6rem 4rem;
-      text-align: center;
-    }
-
-    .cta h2 {
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: -0.5px;
-      margin-bottom: 1rem;
-    }
-
-    .cta p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.85);
-      max-width: 520px;
-      margin: 0 auto 2rem;
-      line-height: 1.7;
-    }
-
-    .btn-white {
-      background: var(--white);
-      color: var(--pink);
-      padding: 0.85rem 2.2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      display: inline-block;
-      transition: opacity 0.2s;
-    }
-
-    .btn-white:hover { opacity: 0.9; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #111;
-      padding: 3rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .footer-links a {
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--white); }
-
-    .footer-copy {
-      color: rgba(255,255,255,0.3);
-      font-size: 0.8rem;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
@@ -462,93 +14,89 @@
     <a href="index.html" class="nav-logo">
       <img src="images/AgilLogoTransparent.png" alt="agil Logo" />
     </a>
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <ul class="nav-links">
       <li><a href="physiotherapie.html" class="active">Physiotherapie</a></li>
       <li><a href="training.html">Gesundheitstraining</a></li>
       <li><a href="standorte.html">Standorte</a></li>
-      <li><a href="#">Jobs</a></li>
+      <li><a href="index.html#karriere">Jobs</a></li>
       <li><a href="standorte.html" class="nav-cta">Kontakt</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero-sub">
     <img
       class="hero-img"
       src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=1600&q=80"
-      alt="Physiotherapie agil"
+      alt="Aktive Physiotherapie bei agil"
     />
     <div class="hero-content">
       <span class="hero-tag">Physiotherapie</span>
-      <h1>Dein Körper.<br /><span>Deine Stärke.</span></h1>
-      <p>Befundorientierte Therapie nach modernsten Standards – individuell, persönlich und wirksam. Weil du mehr verdienst als das Fehlen von Schmerz.</p>
+      <h1>Bewegung ist<br /><span>die Therapie.</span></h1>
+      <p>Aktive, evidenzbasierte Physiotherapie. Wir arbeiten mit Befund, nicht nach Schema – damit du wieder mobil, schmerzfreier und fit fürs Leben wirst.</p>
     </div>
   </section>
 
-  <!-- INTRO -->
+  <!-- INTRO / WAS UNS UNTERSCHEIDET -->
   <section class="intro">
     <div class="intro-text">
       <span class="section-tag">Was uns unterscheidet</span>
-      <h2>Therapie, die <span>wirklich wirkt.</span></h2>
-      <p>Bei agil steht der Mensch im Mittelpunkt – nicht die Diagnose. Jede Behandlung beginnt mit einem gründlichen Befund, um die Ursache zu verstehen, nicht nur die Symptome zu behandeln.</p>
-      <p>Unsere Therapeuten arbeiten mit evidenzbasierten Methoden auf dem neuesten Stand der Medizin – und nehmen sich die Zeit, die du verdienst.</p>
-      <p>Lokal. Persönlich. Individuell. In deinem Stadtteil.</p>
+      <h2>Aktive Therapie <span>ist Standard.</span></h2>
+      <p>Bei agil bist du nicht Zuschauer deiner eigenen Genesung. Wir bringen dich in Bewegung – denn dauerhafte Besserung entsteht durch das, was du selbst tust, nicht durch das, was nur mit dir gemacht wird. Jede Therapie beginnt mit einem gründlichen Befund, um die Ursache zu verstehen.</p>
+      <p>Das heißt nicht, dass passive Maßnahmen keine Rolle spielen – im Gegenteil. Wir nutzen die ganze Bandbreite physiotherapeutischer Methoden, von manueller Therapie bis zu physikalischen Anwendungen. Sie alle dienen demselben Zweck: die Voraussetzungen zu schaffen, damit du wieder aktiv arbeiten kannst.</p>
+      <p>Fachlich gepaart mit Evidenz. Lokal, persönlich und individuell – in deinem Stadtteil.</p>
     </div>
     <img
       class="intro-img"
-      src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80"
-      alt="Physiotherapeut bei der Behandlung"
+      src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80"
+      alt="Aktive Behandlung bei agil"
     />
   </section>
 
-  <!-- LEISTUNGEN -->
-  <section class="leistungen">
-    <div class="leistungen-inner">
-      <div class="leistungen-header">
+  <!-- LEISTUNGEN (gruppiert, Linien-SVG-Icons) -->
+  <section class="leistungen-page">
+    <div class="leistungen-page-inner">
+      <div class="leistungen-page-header">
         <span class="section-tag">Unser Angebot</span>
-        <h2>Was wir behandeln</h2>
+        <h2>Unsere Therapieformen</h2>
       </div>
-      <div class="leistungen-grid">
+      <div class="leistungen-icon-grid">
+
         <div class="leistung-item">
-          <div class="leistung-icon">🦴</div>
-          <h3>Krankengymnastik</h3>
-          <p>Klassische KG zur Wiederherstellung von Beweglichkeit, Kraft und Funktion.</p>
+          <div class="leistung-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E20074" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h4l2-6 4 12 2-6h4"/></svg>
+          </div>
+          <h3>Aktive Therapie</h3>
+          <p>Der Kern: Bewegungs- und Krankengymnastik, gerätegestütztes und funktionelles Training zur Wiederherstellung von Kraft, Beweglichkeit und Funktion.</p>
         </div>
+
         <div class="leistung-item">
-          <div class="leistung-icon">🤲</div>
+          <div class="leistung-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E20074" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V5a2 2 0 0 1 4 0v6m0-5a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6h-1a5 5 0 0 1-5-5 2 2 0 0 1 4 0"/></svg>
+          </div>
           <h3>Manuelle Therapie</h3>
-          <p>Gezielte Mobilisation von Gelenken und Weichteilen zur Schmerzreduktion.</p>
+          <p>Eine tragende Säule: gezielte Mobilisation von Gelenken und Weichteilen sowie Massage – zur Schmerzreduktion und als Vorbereitung auf die aktive Arbeit.</p>
         </div>
+
         <div class="leistung-item">
-          <div class="leistung-icon">💧</div>
-          <h3>Lymphdrainage</h3>
-          <p>Sanfte Entstauungstherapie bei Ödemen und nach operativen Eingriffen.</p>
+          <div class="leistung-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E20074" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>
+          </div>
+          <h3>Physikalische Therapie</h3>
+          <p>Ergänzend: Elektrotherapie, Wärme- und Kälteanwendungen, Ultraschall und Lymphdrainage – unterstützend für den aktiven Therapieerfolg.</p>
         </div>
+
         <div class="leistung-item">
-          <div class="leistung-icon">⚡</div>
-          <h3>Elektrotherapie</h3>
-          <p>Gezielte Reizstrombehandlung zur Schmerzlinderung und Muskelstimulation.</p>
+          <div class="leistung-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E20074" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Beratung & Prävention</h3>
+          <p>Wir erklären, was wir tun und warum. Dazu Empfehlungen für den Alltag und gezielte Prävention, damit Beschwerden gar nicht erst zurückkehren.</p>
         </div>
-        <div class="leistung-item">
-          <div class="leistung-icon">🏋️</div>
-          <h3>KG am Gerät</h3>
-          <p>Gerätegestütztes Training zur Kräftigung und Stabilisierung unter Anleitung.</p>
-        </div>
-        <div class="leistung-item">
-          <div class="leistung-icon">🌡️</div>
-          <h3>Wärme & Kälte</h3>
-          <p>Thermotherapie zur Durchblutungsförderung und Schmerzbehandlung.</p>
-        </div>
-        <div class="leistung-item">
-          <div class="leistung-icon">🔊</div>
-          <h3>Ultraschall</h3>
-          <p>Tiefenwärme durch Ultraschall zur Behandlung von Sehnen und Muskeln.</p>
-        </div>
-        <div class="leistung-item">
-          <div class="leistung-icon">🧘</div>
-          <h3>Massage</h3>
-          <p>Klassische und tiefenwirksame Massagen zur Entspannung und Regeneration.</p>
-        </div>
+
       </div>
     </div>
   </section>
@@ -557,25 +105,41 @@
   <section class="ablauf">
     <div class="ablauf-header">
       <span class="section-tag">So funktioniert es</span>
-      <h2>Dein Weg zur Genesung</h2>
+      <h2>Dein Weg zur Mobilität</h2>
     </div>
     <div class="ablauf-steps">
       <div class="ablauf-step">
         <div class="step-number">1</div>
         <h3>Befund</h3>
-        <p>Wir nehmen uns Zeit, dich und deine Beschwerden wirklich zu verstehen. Gründliche Anamnese und Befunderhebung – die Basis für alles was folgt.</p>
+        <p>Wir nehmen uns Zeit, dich und deine Beschwerden wirklich zu verstehen. Gründliche Anamnese und Befunderhebung – die Basis für alles, was folgt.</p>
       </div>
       <div class="ablauf-step">
         <div class="step-number">2</div>
-        <h3>Behandlung</h3>
-        <p>Individuell auf dich abgestimmt. Evidenzbasierte Methoden, modernste Techniken – und ein Therapeut der wirklich zuhört.</p>
+        <h3>Therapie</h3>
+        <p>Individuell auf dich abgestimmt. Alle therapeutischen Maßnahmen, die zur Verfügung stehen, setzen wir gezielt mit einem Ziel ein: dich wieder in Aktivität zu bringen. Evidenzbasiert und auf dem neuesten Stand.</p>
       </div>
       <div class="ablauf-step">
         <div class="step-number">3</div>
-        <h3>Erfolg</h3>
-        <p>Zurück ins Leben. Aktiv, selbstbestimmt und stärker als zuvor. Nicht nur beschwerdefrei – sondern besser als je zuvor.</p>
+        <h3>Fit fürs Leben</h3>
+        <p>Wieder mobil, schmerzfreier und belastbarer. Zurück in einen aktiven Alltag – und auf Wunsch nahtlos weiter ins Gesundheitstraining.</p>
       </div>
     </div>
+  </section>
+
+  <!-- REZEPT / KASSEN -->
+  <section class="intro">
+    <div class="intro-text">
+      <span class="section-tag">Rezept & Kassen</span>
+      <h2>Mit Verordnung <span>bei allen Kassen.</span></h2>
+      <p>Wir behandeln auf ärztliche Verordnung bei allen gesetzlichen Kassen und privat. Auch Selbstzahler sind willkommen.</p>
+      <p>Du hast eine Heilmittelverordnung vom Arzt? Bring sie einfach zum ersten Termin mit. Bei Fragen zu Rezept, Zuzahlung oder Ablauf helfen wir dir an deinem Standort gerne weiter.</p>
+      <p>Bei akuten Beschwerden lohnt sich der frühe Anruf – wir finden gemeinsam einen passenden Termin.</p>
+    </div>
+    <img
+      class="intro-img"
+      src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=800&q=80"
+      alt="Empfang und Beratung bei agil"
+    />
   </section>
 
   <!-- STANDORTE -->
@@ -622,24 +186,25 @@
 
   <!-- CTA -->
   <section class="cta">
-    <h2>Bereit für den ersten Schritt?</h2>
+    <h2>Fachlich. Menschlich. Agil.</h2>
     <p>Ruf uns an oder schreib uns – wir finden gemeinsam den richtigen Weg für dich. Mit ärztlicher Verordnung bei allen Kassen und privat.</p>
     <a href="mailto:mail@physio-agil.de" class="btn-white">Jetzt Kontakt aufnehmen</a>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div>
-      <img src="images/AgilLogoTransparent.png" alt="agil Logo" style="height: 40px; width: auto;" />
+    <div class="footer-logo">
+      <img src="images/AgilLogoTransparent.png" alt="agil Logo" />
     </div>
     <ul class="footer-links">
-      <li><a href="#">Impressum</a></li>
-      <li><a href="#">Datenschutz</a></li>
-      <li><a href="#">AGB</a></li>
+      <li><a href="https://physio-agil.de/impressum/" target="_blank" rel="noopener">Impressum</a></li>
+      <li><a href="https://physio-agil.de/datenschutz/" target="_blank" rel="noopener">Datenschutz</a></li>
+      <li><a href="https://physio-agil.de/agb/" target="_blank" rel="noopener">AGB</a></li>
       <li><a href="mailto:mail@physio-agil.de">mail@physio-agil.de</a></li>
     </ul>
     <div class="footer-copy">© 2025 agil Physiotherapie & Gesundheitstraining</div>
   </footer>
 
+  <script src="js/nav.js" defer></script>
 </body>
 </html>
